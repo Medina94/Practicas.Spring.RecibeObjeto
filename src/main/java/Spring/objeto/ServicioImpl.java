@@ -1,5 +1,7 @@
 package Spring.objeto;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +22,8 @@ public class ServicioImpl implements Servicio{
 
 
 	@Override
-	public RepositorioImpl traerObjeto() {
-		return repositorio.getObjeto();
+	public RepositorioImpl traerObjeto(RepositorioImpl repo) {
+		return repositorio.invertirNombreObjeto(repo);
 	}
 
 }

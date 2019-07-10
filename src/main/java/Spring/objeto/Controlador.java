@@ -1,5 +1,7 @@
 package Spring.objeto;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +16,8 @@ public class Controlador {
 	private Servicio servicio;
 	
 	@PostMapping(consumes= {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
-	public RepositorioImpl traerDatosObjeto(@RequestBody Repositorio repositorio) {
-		return servicio.traerObjeto();
+	public RepositorioImpl traerDatosObjeto(@RequestBody RepositorioImpl repo) {
+		
+		return servicio.traerObjeto(repo);
 	}
 }
