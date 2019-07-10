@@ -26,4 +26,10 @@ public class ServicioImpl implements Servicio{
 		return repositorio.invertirNombreObjeto(repo);
 	}
 
+
+	@Override
+	public List<RepositorioImpl> traerLista(RepositorioImpl repo) {
+		return repositorio.PermutarNombreObjeto(repo);
+	}
+
 }

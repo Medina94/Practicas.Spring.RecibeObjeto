@@ -20,4 +20,10 @@ public class Controlador {
 		
 		return servicio.traerObjeto(repo);
 	}
+	
+	@RequestMapping("/permutar")
+	@PostMapping(consumes= {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+	public List<RepositorioImpl> traerListaPermutaciones(@RequestBody RepositorioImpl repo) {
+		return servicio.traerLista(repo);
+	}
 }

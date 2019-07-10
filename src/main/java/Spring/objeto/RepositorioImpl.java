@@ -3,20 +3,28 @@ package Spring.objeto;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 @Repository
 public class RepositorioImpl implements Repositorio {
-	private int id;
+	private String id;
 	private String nombre;
 
+	/*public RepositorioImpl(String id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+	}
+*/
 	//--------------------------------------------------------------------------------------------------------
 	// GETTERS AND SETTERS
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -26,6 +34,10 @@ public class RepositorioImpl implements Repositorio {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	
+	public RepositorioImpl() {
+		// TODO Auto-generated constructor stub
 	}
 
 //--------------------------------------------------------------------------------------------------------
@@ -42,8 +54,8 @@ public class RepositorioImpl implements Repositorio {
 	public List<RepositorioImpl> PermutarNombreObjeto(RepositorioImpl repo) {
 			List<RepositorioImpl> lista = new ArrayList();
 			List<String> listaString = new ArrayList();
-			String txt = "";
-			char[] array = repo.getNombre().toCharArray();
+			String txt = repo.getNombre();
+			char[] array = txt.toCharArray();
 			char[] copia = array;
 			char aux;
 			listaString.add(String.valueOf(array));
@@ -69,9 +81,12 @@ public class RepositorioImpl implements Repositorio {
 			}
 
 			for(int i=0; i<listaString.size(); i++) {
-				this.setId(getId()+i);
-				this.setNombre(listaString.get(i));
-				lista.add(this);//
+				RepositorioImpl r = new RepositorioImpl();
+				r.setId(""+(i+1));
+				r.setNombre(listaString.get(i));
+				
+				lista.add(r);
+				
 			}
 			
 			return lista;
