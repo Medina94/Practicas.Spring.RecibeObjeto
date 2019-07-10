@@ -43,10 +43,15 @@ public class RepositorioImpl implements Repositorio {
 //--------------------------------------------------------------------------------------------------------
 	@Override
 	public RepositorioImpl invertirNombreObjeto(RepositorioImpl repo) {
-		RepositorioImpl r = repo;
-		this.setNombre(repo.getNombre() + "-Concatenado");
-		this.setId(repo.getId() + 1);
-		return this;
+		RepositorioImpl r = new RepositorioImpl();
+		String txt="";
+		String s = repo.getNombre();
+		for(int i=(s.length()-1); i >=0; i--) {
+			txt += repo.getNombre().charAt(i);
+		}
+		r.setNombre(txt);
+		r.setId(repo.getId());
+		return r;
 	}
 
 //---------------------------------------------------------------------------------------------------------
