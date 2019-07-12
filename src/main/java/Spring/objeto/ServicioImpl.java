@@ -29,7 +29,7 @@ public class ServicioImpl implements Servicio{
 
 	@Override
 	public List<RepositorioImpl> traerLista(RepositorioImpl repo) {
-		return repositorio.PermutarNombreObjeto(repo);
+		return repositorio.permutacionString(repo.getNombre(), 0);
 	}
 
 }

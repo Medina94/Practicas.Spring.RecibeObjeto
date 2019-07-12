@@ -2,6 +2,7 @@ package Spring.objeto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,12 +13,12 @@ public class RepositorioImpl implements Repositorio {
 	private String id;
 	private String nombre;
 
-	/*public RepositorioImpl(String id, String nombre) {
+	public RepositorioImpl(String id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 	}
-*/
+
 	//--------------------------------------------------------------------------------------------------------
 	// GETTERS AND SETTERS
 	public String getId() {
@@ -96,5 +97,30 @@ public class RepositorioImpl implements Repositorio {
 			
 			return lista;
 		}
+	//--------------------------------------------------------------------------------------------------------------------
+	private void intercambiar(char[] array, int pos, int pos2) {
+		char temp = array[pos];
+		array[pos] = array[pos2];
+		array[pos2] = temp;
+	}
+	
+	@Override
+	public List<RepositorioImpl> permutacionString(String nombre, int indice){
+		List<RepositorioImpl> lista = new ArrayList();
+		
+		char[] array = nombre.toCharArray(); 
+		
+		if(indice == array.length-1) {
+			lista.add(new RepositorioImpl(""+1, String.valueOf(array)));
+		}
+		for(int i=indice; i<nombre.length(); i++) {
+			intercambiar(array, indice, i);
+			permutacionString(nombre, indice+1);
+			intercambiar(array, indice, i);
+		}
+		
+		return lista;
+	}
+	
 
 }
